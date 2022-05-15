@@ -24,14 +24,21 @@
 {% if test_url == '' %}
     <div></div>
 {% else %}
+
+    {% if contained_wjc == '' %}
+    <div>This page contains no prohibited words</div>
+    {% else %}
+    <div>This page contains prohibited words : {{contained_wjc}} </div>
+    {% endif %}
+
+    {% if have_dangerous_file %}
+    <div>{{test_url}}中可能含有危险文件</div>
+    {% endif%}
+
     <div>The credibility of {{test_url}} is {{trust_value}} </div>
 {% endif %}
     <br>
-{% if contained_wjc == '' %}
-    <div>This page contains no prohibited words</div>
-{% else %}
-    <div>This page contains prohibited words : {{contained_wjc}} </div>
-{% endif %}
+
 </div>
 </body>
 
