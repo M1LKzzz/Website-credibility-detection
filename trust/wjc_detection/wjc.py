@@ -101,7 +101,7 @@ def wjc_detect(url):
             将违禁词文件编译成正则表达式
             :return:
             """
-            with open('trust/detect_func/filter.txt', 'r', encoding='utf-8') as f:
+            with open('trust/wjc_detection/filter.txt', 'r', encoding='utf-8') as f:
                 filter_str = '|'.join([str.strip() for str in f])
             return re.compile(rf'({filter_str})')
 
