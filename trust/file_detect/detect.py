@@ -40,7 +40,7 @@ def extract_download_urls(url: str) -> list[str]:
 # download file and return filename|None
 def download_file(url) -> str:
     filesize = get_file_size(url)
-    if filesize > 100 * (1024**2):  # 不下载大于100M的文件
+    if filesize > 50 * (1024**2):  # 不下载大于100M的文件
         print(f"file too large which from {url}.")
         return
     else:
