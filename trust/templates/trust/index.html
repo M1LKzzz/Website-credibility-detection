@@ -15,30 +15,46 @@
 <body>
 <div class="main">
 <form action="/" method="post">
-    <div style="float:left">Please enter the web address :</div>
+    <div style="float:left">请输入网址 :</div>
     <br>
     <input type="text" name="url">
-    <input type="submit" value="submit" class="sub"/>
+    <input type="submit" value="查询" class="sub"/>
 </form>
     <br>
 {% if test_url == '' %}
     <div></div>
-{% else %}
-    <div>The credibility of this website : {{trust_value}} </div>
+{% else %} 
+    {% if url_flag %}
+        <br>
+        {% if contained_wjc == '' %}
+            <div>未检测到违禁词</div>
+        {% else %}
+            <div>网页含有违禁词 : {{contained_wjc}} </div>
+        {% endif %}
+        <br>
+        {% if phishing_website %}
+            <div>该网页疑似钓鱼网站，请谨慎访问</div>
+        {% else %}
+            <div>该网页非钓鱼网站</div>
+        {% endif %}
+        <br>
+        {% if have_dangerous_file %}
+            <div>该网页中可能含有危险文件</div>
+        {% else %}
+            <div>该网页中未检测到危险文件</div>
+        {% endif %}
+        <br>
+        {% if trust_value %}
+            <div>经检测，该网站可信度较高 </div>
+        {% else %}
+            <div>经检测，该网站可信度较低</div>
+        {% endif %}
+    {% else %}
+        <div>请输入正确格式的网址</div>
+    {% endif %}
+    
 {% endif %}
-    <br>
-{% if contained_wjc == '' %}
-    <div>No prohibited words</div>
-{% else %}
-    <div>prohibited words : {{contained_wjc}} </div>
-{% endif %}
-    <br>
-{% if phishing_website == '' %}
-    <div>{{phishing_website}}</div>
-{% else %}
-    <div>{{phishing_website}} </div>
-{% endif %}
-    <br>
+   
 </div>
 </body>
 

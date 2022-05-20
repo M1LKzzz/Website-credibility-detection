@@ -37,11 +37,11 @@ def phishing_detect(url):
     try:
         prediction = random_forest_classifier.predict(x_input)
         if prediction == 1:
-            return "Phishing Website"
+            return True
         else:
-            return "Not Phishing Website"
+            return False
     except:
-        return  "Not Phishing Website--+"
+        return  False
 
 # if __name__ == '__main__':
 #     result = phishing_detect("https://www.baidu.com/")
